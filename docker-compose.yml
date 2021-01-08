@@ -1,0 +1,23 @@
+version: '3'
+services:
+  database:
+    container_name: shipserv-database
+    image: "mongo"
+    environment:
+      - MONGO_INITDB_DATABASE=shipserv_dev
+      - MONGO_INITDB_ROOT_USERNAME=shipserv
+      - MONGO_INITDB_ROOT_PASSWORD=shipserv
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - mongodb:/data/db
+    ports:
+      - '27017-27019:27017-27019'
+    networks:
+      - shipserv_network
+
+networks:
+  shipserv_network:
+    driver: bridge
+
+volumes:
+  mongodb:

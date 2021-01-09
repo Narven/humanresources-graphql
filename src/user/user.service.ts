@@ -26,4 +26,8 @@ export class UserService {
     await this.userModel.updateOne({ _id: userId }, { role });
     return this.userModel.findById(userId);
   }
+
+  async getById(userId: string): Promise<User> {
+    return this.userModel.findById(userId);
+  }
 }

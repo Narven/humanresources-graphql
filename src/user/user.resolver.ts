@@ -5,11 +5,17 @@ import { UserService } from './user.service';
 
 @Resolver()
 export class UserResolver {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService) {
+  }
 
   @Query(() => [UserDto])
   async users() {
     return this.userService.findAll();
+  }
+
+  @Query(() => UserDto)
+  async user(@Args('id') id: string) {
+    return this.userService.getById(id);
   }
 
   @Mutation(() => UserDto)

@@ -1,11 +1,13 @@
-import * as helmet from 'helmet';
+// import * as helmet from 'helmet';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.use(helmet());
-  app.enableCors();
+  const app = await NestFactory.create(AppModule, {
+    logger: true,
+  });
+  // app.use(helmet());
+  // app.enableCors();
   await app.listen(3000);
 }
 

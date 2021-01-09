@@ -12,6 +12,7 @@ input DepartmentInput {
 }
 
 type Mutation {
+  assignRole(role: String!, userId: String!): UserDto!
   createDepartment(input: DepartmentInput!): DepartmentDto!
   createUser(input: UserInput!): UserDto!
 }

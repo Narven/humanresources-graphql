@@ -16,4 +16,9 @@ export class UserResolver {
   async createUser(@Args('input') input: UserInput) {
     return this.userService.create(input);
   }
+
+  @Mutation(() => UserDto)
+  async assignRole(@Args('userId') userId: string, @Args('role') role: string) {
+    return this.userService.assignRole(userId, role);
+  }
 }

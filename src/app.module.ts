@@ -17,7 +17,9 @@ const dsn = 'mongodb://shipserv:shipserv@127.0.0.1:27017/shipserv_dev';
       cache: true,
       isGlobal: true,
     }),
-    MongooseModule.forRoot(dsn),
+    MongooseModule.forRoot(dsn, {
+      useFindAndModify: false,
+    }),
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
@@ -28,4 +30,5 @@ const dsn = 'mongodb://shipserv:shipserv@127.0.0.1:27017/shipserv_dev';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+}

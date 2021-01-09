@@ -5,6 +5,7 @@
 type DepartmentDto {
   id: ID!
   name: String!
+  users: [UserDto!]!
 }
 
 input DepartmentInput {
@@ -25,18 +26,34 @@ type Query {
 }
 
 type UserDto {
-  department: String!
+  department: DepartmentDto!
   email: String!
   id: ID!
   name: String!
   phone: String!
-  role: String!
+  role: UserRole!
 }
 
 input UserInput {
+  """ID of the department"""
   department: String!
+
+  """Email of the User"""
   email: String!
+
+  """User name"""
   name: String!
   phone: String!
-  role: String!
+
+  """Role of the User"""
+  role: String = "user"
+}
+
+"""Allowed roles"""
+enum UserRole {
+  """The creator and ruler of the universe"""
+  Admin
+
+  """Standard Hu-man"""
+  User
 }

@@ -1,4 +1,7 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Extensions, Field, ID, ObjectType } from '@nestjs/graphql';
+import { UserDto } from '../../user/dtos/user.dto';
+import UserRole from '../../user/user-role.enum';
+import { User } from '../../user/user.schema';
 
 @ObjectType()
 export class DepartmentDto {
@@ -7,4 +10,8 @@ export class DepartmentDto {
 
   @Field()
   readonly name: string;
+
+  @Field(() => [UserDto])
+  // @Extensions({ role: UserRole.Admin })
+  readonly users: User[];
 }

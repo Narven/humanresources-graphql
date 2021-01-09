@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { DepartmentModule } from './department/department.module';
+import { AuthModule } from './auth/auth.module';
 
 // TODO move to config
 const dsn = 'mongodb://shipserv:shipserv@127.0.0.1:27017/shipserv_dev';
@@ -19,6 +20,8 @@ const dsn = 'mongodb://shipserv:shipserv@127.0.0.1:27017/shipserv_dev';
     }),
     MongooseModule.forRoot(dsn, {
       useFindAndModify: false,
+      useCreateIndex: true,
+      useNewUrlParser: true,
     }),
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
@@ -26,6 +29,7 @@ const dsn = 'mongodb://shipserv:shipserv@127.0.0.1:27017/shipserv_dev';
     }),
     UserModule,
     DepartmentModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

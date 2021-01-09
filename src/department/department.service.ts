@@ -9,7 +9,8 @@ export class DepartmentService {
   constructor(
     @InjectModel('Department')
     private readonly departmentModel: Model<DepartmentDocument>,
-  ) {}
+  ) {
+  }
 
   async findAll(): Promise<Department[]> {
     return this.departmentModel.find().exec();
@@ -19,5 +20,9 @@ export class DepartmentService {
     const createDepartment = new this.departmentModel(createDepartmentDto);
     console.debug('createDepartmentDto', createDepartmentDto);
     return await createDepartment.save();
+  }
+
+  async getById(id: string): Promise<Department> {
+    return this.departmentModel.findById(id);
   }
 }

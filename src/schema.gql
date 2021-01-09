@@ -18,6 +18,7 @@ type Mutation {
 }
 
 type Query {
+  department(id: String!): DepartmentDto!
   departments: [DepartmentDto!]!
   user(id: String!): UserDto!
   users: [UserDto!]!

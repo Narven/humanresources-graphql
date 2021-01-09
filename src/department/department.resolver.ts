@@ -12,6 +12,11 @@ export class DepartmentResolver {
     return this.departmentService.findAll();
   }
 
+  @Query(() => DepartmentDto)
+  async department(@Args('id') id: string) {
+    return this.departmentService.getById(id);
+  }
+
   @Mutation(() => DepartmentDto)
   async createDepartment(@Args('input') input: DepartmentInput) {
     return this.departmentService.create(input);

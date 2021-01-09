@@ -2,11 +2,22 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type DepartmentDto {
+  id: ID!
+  name: String!
+}
+
+input DepartmentInput {
+  name: String!
+}
+
 type Mutation {
+  createDepartment(input: DepartmentInput!): DepartmentDto!
   createUser(input: UserInput!): UserDto!
 }
 
 type Query {
+  departments: [DepartmentDto!]!
   users: [UserDto!]!
 }
 

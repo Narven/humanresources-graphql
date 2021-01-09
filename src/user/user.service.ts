@@ -7,7 +7,8 @@ import { User, UserDocument } from './user.schema';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel('User') private readonly userModel: Model<UserDocument>,
+    @InjectModel('User')
+    private readonly userModel: Model<UserDocument>,
   ) {}
 
   async findAll(): Promise<User[]> {

@@ -7,7 +7,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { DepartmentModule } from './department/department.module';
-import { AuthModule } from './auth/auth.module';
 
 // TODO move to config
 const dsn =
@@ -16,7 +15,7 @@ const dsn =
 @Module({
   imports: [
     ConfigModule.forRoot({
-      cache: true,
+      cache: process.env.NODE_ENV !== 'development',
       isGlobal: true,
     }),
     MongooseModule.forRoot(dsn, {
@@ -30,7 +29,6 @@ const dsn =
     }),
     UserModule,
     DepartmentModule,
-    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

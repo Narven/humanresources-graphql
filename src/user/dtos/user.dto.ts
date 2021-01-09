@@ -1,4 +1,4 @@
-import { Extensions, Field, ID, ObjectType, registerEnumType } from '@nestjs/graphql';
+import { Field, ID, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { Department } from '../../department/department.schema';
 import { DepartmentDto } from '../../department/dtos/department.dto';
 import UserRole from '../user-role.enum';
@@ -28,14 +28,11 @@ export class UserDto {
   readonly email: string;
 
   @Field()
-  // @Extensions({ role: UserRole.User })
   readonly phone: string;
 
   @Field(() => UserRole)
-  // @Extensions({ role: UserRole.Admin })
   readonly role: UserRole;
 
   @Field(() => DepartmentDto)
-  // @Extensions({ role: UserRole.User })
   readonly department: Department;
 }

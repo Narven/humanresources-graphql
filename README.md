@@ -5,7 +5,9 @@ Example API built with NestJS/MongoDB using GraphQL with Docker.
 ### Local Development
 
 * Copy `.env.example` to `.env`
-* Use `docker-compose up -d` to bring up the needed containers.
+* Run `docker-compose up -d` to bring up the needed containers.
+* Run `yarn run start:dev` to run API.
+
 > GraphQL will be available at: http://localhost:3000/graphql
 
 ### Notes

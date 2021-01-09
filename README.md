@@ -6,14 +6,13 @@ Example API built with NestJS/MongoDB using GraphQL with Docker.
 
 * Copy `.env.example` to `.env`
 * Use `docker-compose up -d` to bring up the needed containers.
-
 > GraphQL will be available at: http://localhost:3000/graphql
 
 ### Notes
 
 * `User.email` is unique
 
-#### Graphql Examples
+#### GraphQL Examples
 
 Get Users with department
 ```graphql
@@ -54,3 +53,7 @@ mutation {
   }
 }
 ```
+
+#### Clean Up
+
+* Run `docker-compose down`

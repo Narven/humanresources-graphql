@@ -10,7 +10,8 @@ import { DepartmentModule } from './department/department.module';
 import { AuthModule } from './auth/auth.module';
 
 // TODO move to config
-const dsn = 'mongodb://shipserv:shipserv@127.0.0.1:27017/shipserv_dev';
+const dsn =
+  'mongodb://humanresources:humanresources@127.0.0.1:27017/humanresources_dev';
 
 @Module({
   imports: [
@@ -34,5 +35,4 @@ const dsn = 'mongodb://shipserv:shipserv@127.0.0.1:27017/shipserv_dev';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-}
+export class AppModule {}

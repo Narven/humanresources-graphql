@@ -1,4 +1,4 @@
-# shipserv-graphql
+# humanresources-graphql
 
 Example API built with NestJS/MongoDB using GraphQL with Docker.
 

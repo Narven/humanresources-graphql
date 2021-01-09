@@ -1,11 +1,11 @@
 db.createUser(
   {
-    user: "shipserv",
-    pwd: "shipserv",
+    user: "humanresources",
+    pwd: "humanresources",
     roles: [
       {
         role: "readWrite",
-        db: "shipserv_dev",
+        db: "humanresources_dev",
       },
     ],
   },

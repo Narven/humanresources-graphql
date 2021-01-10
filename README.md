@@ -14,6 +14,22 @@ Example API built with NestJS/MongoDB using GraphQL with Docker.
 
 * `User.email` is unique
 
+### JWT
+
+```
+humanresources
+```
+
+#### Admin JWT
+```jwt
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlIjoiYWRtaW4ifQ.8gAo3wsNqtAgNdkA7rRXWRxnR60FAEAC9JI5s3-8Icw
+```
+
+#### User JWT
+```jwt
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlIjoidXNlciJ9.L61mLlkyUR4sX2QDIK6j8FnHeQjdSgEo1wfer3hZKp4
+```
+
 #### GraphQL Examples
 
 Get Users with department

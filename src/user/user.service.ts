@@ -12,12 +12,13 @@ export class UserService {
   constructor(
     @InjectModel('User')
     private readonly userModel: Model<UserDocument>,
-  ) {
+  ) {}
 
-  }
-
-  async findAll(): Promise<User[]> {
-    return this.userModel.find().populate('department').exec();
+  async findAll(roleAccess: UserRole): Promise<User[]> {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const accessModel = this.userModel.byAccess(roleAccess);
+    return accessModel.find().populate('department').exec();
   }
 
   async create(userInput: UserInput): Promise<User> {
@@ -30,10 +31,10 @@ export class UserService {
     return this.userModel.findById(userId);
   }
 
-  async getById(roleAcess: string[], userId: string): Promise<User> {
+  async getById(roleAccess: UserRole, userId: string): Promise<User> {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const accessModel = this.userModel.byAccess(roleAcess);
+    const accessModel = this.userModel.byAccess(roleAccess);
     return accessModel.findById(userId).populate('department');
   }
 }

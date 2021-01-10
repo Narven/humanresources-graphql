@@ -1,4 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { GetClaims } from '../decorators/get-claims.decorator';
+import ITokenClaims from '../interfaces/token-claims.interface';
 import { DepartmentService } from './department.service';
 import { DepartmentDto } from './dtos/department.dto';
 import { DepartmentInput } from './inputs/department.input';
@@ -8,13 +10,13 @@ export class DepartmentResolver {
   constructor(private readonly departmentService: DepartmentService) {}
 
   @Query(() => [DepartmentDto])
-  async departments() {
-    return this.departmentService.findAll();
+  async departments(@GetClaims() claims: ITokenClaims) {
+    return this.departmentService.findAll(claims.role);
   }
 
   @Query(() => DepartmentDto)
-  async department(@Args('id') id: string) {
-    return this.departmentService.getById(id);
+  async department(@GetClaims() claims: ITokenClaims, @Args('id') id: string) {
+    return this.departmentService.getById(claims.role, id);
   }
 
   @Mutation(() => DepartmentDto)

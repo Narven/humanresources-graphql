@@ -1,5 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { GetClaims } from '../decorators/get-claims.decorator';
 import { DepartmentService } from '../department/department.service';
+import ITokenClaims from '../interfaces/token-claims.interface';
 import { UserDto } from './dtos/user.dto';
 import { UserInput } from './inputs/user.input';
 import UserRole from './user-role.enum';
@@ -12,15 +14,19 @@ export class UserResolver {
     private readonly departmentService: DepartmentService,
   ) {}
 
+  @Query(() => UserDto)
+  async me(@GetClaims() claims: ITokenClaims) {
+    return this.userService.getById(claims.role, claims.uid);
+  }
+
   @Query(() => [UserDto])
-  async users() {
-    return this.userService.findAll();
+  async users(@GetClaims() claims: ITokenClaims) {
+    return this.userService.findAll(claims.role);
   }
 
   @Query(() => UserDto)
-  async user(@Args('id') id: string) {
-    const roleLevel = ['user'];
-    return this.userService.getById(roleLevel, id);
+  async user(@GetClaims() claims: ITokenClaims, @Args('id') id: string) {
+    return this.userService.getById(claims.role, id);
   }
 
   @Mutation(() => UserDto)

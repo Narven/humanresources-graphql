@@ -7,7 +7,7 @@ import { User, UserDocument } from './user.schema';
 
 @Injectable()
 export class UserService {
-  private readonly _logger = new Logger('UserService');
+  private readonly logger = new Logger('UserService');
 
   constructor(
     @InjectModel('User')
@@ -15,9 +15,10 @@ export class UserService {
   ) {}
 
   async findAll(roleAccess: UserRole): Promise<User[]> {
+    this.logger.debug(roleAccess, 'role access');
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const accessModel = this.userModel.byAccess(roleAccess);
+    const accessModel = this.userModel.byAccess([roleAccess]);
     return accessModel.find().populate('department').exec();
   }
 

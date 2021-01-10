@@ -45,6 +45,6 @@ export class User {
 
 const UserSchema = SchemaFactory.createForClass(User);
 
-UserSchema.plugin(mongoFields);
+UserSchema.plugin(mongoFields, { depth: 3 });
 
 export { UserSchema };

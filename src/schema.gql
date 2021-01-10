@@ -5,7 +5,7 @@
 type DepartmentDto {
   id: ID!
   name: String!
-  users: [UserDto!]!
+  users: [UserDto!]
 }
 
 input DepartmentInput {

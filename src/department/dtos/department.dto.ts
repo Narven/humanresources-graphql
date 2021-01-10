@@ -10,6 +10,6 @@ export class DepartmentDto {
   @Field()
   readonly name: string;
 
-  @Field(() => [UserDto])
-  readonly users: User[];
+  @Field(() => [UserDto], { nullable: true })
+  readonly users?: User[];
 }

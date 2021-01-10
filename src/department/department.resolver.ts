@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { GetClaims } from '../decorators/get-claims.decorator';
 import ITokenClaims from '../interfaces/token-claims.interface';
@@ -7,10 +8,13 @@ import { DepartmentInput } from './inputs/department.input';
 
 @Resolver()
 export class DepartmentResolver {
+  private logger = new Logger('DepartmentResolver');
+
   constructor(private readonly departmentService: DepartmentService) {}
 
   @Query(() => [DepartmentDto])
   async departments(@GetClaims() claims: ITokenClaims) {
+    this.logger.debug(claims, 'role');
     return this.departmentService.findAll(claims.role);
   }
 

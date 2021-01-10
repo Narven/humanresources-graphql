@@ -20,13 +20,13 @@ export class Department {
         type: mongoose.Schema.Types.ObjectId,
       },
     ],
-    access: ['admin'],
+    access: ['admin', 'user'],
   })
   users: User[];
 }
 
 const DepartmentSchema = SchemaFactory.createForClass(Department);
 
-DepartmentSchema.plugin(mongoFields);
+DepartmentSchema.plugin(mongoFields, { depth: 3 });
 
 export { DepartmentSchema };

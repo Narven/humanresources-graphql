@@ -4,6 +4,7 @@ Example API built with NestJS/MongoDB using GraphQL with Docker.
 
 ### Local Development
 
+* Instal dependencies with `yarn` 
 * Copy `.env.example` to `.env`
 * Run `docker-compose up -d` to bring up the needed containers.
 * Run `yarn run start:dev` to run API.
@@ -22,12 +23,12 @@ humanresources
 
 #### Admin JWT
 ```jwt
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlIjoiYWRtaW4ifQ.8gAo3wsNqtAgNdkA7rRXWRxnR60FAEAC9JI5s3-8Icw
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlIjoiYWRtaW4iLCJ1aWQiOiI1ZmZhYzc1NDU5MmNkOGUxMTU0ZTU2OWIifQ.NLoIm25_a_oX3M81RmNNNnSPWjh9Cw_TB3DU81W7vQM
 ```
 
 #### User JWT
 ```jwt
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlIjoidXNlciJ9.L61mLlkyUR4sX2QDIK6j8FnHeQjdSgEo1wfer3hZKp4
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlIjoidXNlciIsInVpZCI6IjVmZmFjNzU0NTkyY2Q4ZTExNTRlNTY5YiJ9.8pojdnXifgJClLK-dDl8xfD-o9pN8uoJjsrXFrOHMpQ
 ```
 
 #### GraphQL Examples
@@ -40,10 +41,6 @@ Get Users with department
     email
     role
     name
-    department {
-      id
-      name
-    }
     phone
   }
 }

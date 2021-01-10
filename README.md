@@ -6,7 +6,7 @@ Example API built with NestJS/MongoDB using GraphQL with Docker.
 
 * Instal dependencies with `yarn` 
 * Copy `.env.example` to `.env`
-* Run `docker-compose up -d` to bring up the needed containers.
+* Run `docker-compose up -d` to bring up the needed containers in background.
 * Run `yarn run start:dev` to run API.
 
 > GraphQL will be available at: http://localhost:3000/graphql
@@ -17,9 +17,19 @@ Example API built with NestJS/MongoDB using GraphQL with Docker.
 
 ### JWT
 
+This project uses JWT for authentication. Format of the JWT claims needs to be:
+
+```json
+{
+  "uid": "some-user-id",
+  "role": "admin"
+}
 ```
-humanresources
-```
+
+> Encryption is not needed, since we only care about reading the JWT claims.
+> Use jwt.io if needed to generate a new one.
+> `uid` is only needed for the `me` request, please generate a jwt with the claims above and an existing user id
+> `role` is used in all request and can be `admin` or `user`, if not specified, assumed `user`
 
 #### Admin JWT
 ```jwt

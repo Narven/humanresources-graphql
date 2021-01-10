@@ -3,10 +3,12 @@ services:
   database:
     container_name: humanresources-database
     image: "mongo"
-    environment:
-      - MONGO_INITDB_DATABASE=humanresources_dev
-      - MONGO_INITDB_ROOT_USERNAME=humanresources
-      - MONGO_INITDB_ROOT_PASSWORD=humanresources
+    env_file:
+      - .env
+#    environment:
+#      - MONGO_INITDB_DATABASE=humanresources_dev
+#      - MONGO_INITDB_ROOT_USERNAME=humanresources
+#      - MONGO_INITDB_ROOT_PASSWORD=humanresources
     volumes:
       - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       - mongodb:/data/db

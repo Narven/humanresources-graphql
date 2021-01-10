@@ -26,11 +26,12 @@ type Query {
   users: [UserDto!]!
 }
 
+"""User"""
 type UserDto {
   department: DepartmentDto!
   email: String!
   id: ID!
-  name: String!
+  name: String
   phone: String!
   role: UserRole
 }

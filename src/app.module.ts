@@ -8,12 +8,19 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { DepartmentModule } from './department/department.module';
+import * as dotenv from 'dotenv';
+
+const {
+  MONGO_INITDB_ROOT_USERNAME,
+  MONGO_INITDB_ROOT_PASSWORD,
+  DB_HOST,
+  DB_PORT,
+  MONGO_INITDB_DATABASE,
+} = dotenv.config().parsed;
 
 mongoose.set('debug', process.env.NODE_ENV !== 'production');
 
-// TODO move to config
-const dsn =
-  'mongodb://humanresources:humanresources@127.0.0.1:27017/humanresources_dev';
+const dsn = `mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@${DB_HOST}:${DB_PORT}/${MONGO_INITDB_DATABASE}`;
 
 @Module({
   imports: [

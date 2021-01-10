@@ -16,18 +16,20 @@ registerEnumType(UserRole, {
   },
 });
 
-@ObjectType()
+@ObjectType({
+  description: 'User',
+})
 export class UserDto {
   @Field(() => ID)
   readonly id: string;
 
-  @Field()
+  @Field(() => String, { nullable: true })
   readonly name?: string;
 
-  @Field()
+  @Field(() => String)
   readonly email: string;
 
-  @Field()
+  @Field(() => String)
   readonly phone: string;
 
   @Field(() => UserRole, { nullable: true })

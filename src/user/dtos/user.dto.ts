@@ -22,7 +22,7 @@ export class UserDto {
   readonly id: string;
 
   @Field()
-  readonly name: string;
+  readonly name?: string;
 
   @Field()
   readonly email: string;
@@ -30,8 +30,8 @@ export class UserDto {
   @Field()
   readonly phone: string;
 
-  @Field(() => UserRole)
-  readonly role: UserRole;
+  @Field(() => UserRole, { nullable: true })
+  readonly role?: UserRole;
 
   @Field(() => DepartmentDto)
   readonly department: Department;

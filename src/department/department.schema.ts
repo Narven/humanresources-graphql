@@ -2,12 +2,15 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { Document } from 'mongoose';
 import { User } from '../user/user.schema';
+import * as mongoFields from 'mongoose-fields-filter';
 
 export type DepartmentDocument = Department & Document;
 
 @Schema()
 export class Department {
-  @Prop()
+  @Prop({
+    access: ['user', 'admin'],
+  })
   name: string;
 
   @Prop({
@@ -17,8 +20,13 @@ export class Department {
         type: mongoose.Schema.Types.ObjectId,
       },
     ],
+    access: ['admin'],
   })
   users: User[];
 }
 
-export const DepartmentSchema = SchemaFactory.createForClass(Department);
+const DepartmentSchema = SchemaFactory.createForClass(Department);
+
+DepartmentSchema.plugin(mongoFields);
+
+export { DepartmentSchema };

@@ -2,6 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { DepartmentService } from '../department/department.service';
 import { UserDto } from './dtos/user.dto';
 import { UserInput } from './inputs/user.input';
+import UserRole from './user-role.enum';
 import { UserService } from './user.service';
 
 @Resolver()
@@ -18,7 +19,8 @@ export class UserResolver {
 
   @Query(() => UserDto)
   async user(@Args('id') id: string) {
-    return this.userService.getById(id);
+    const roleLevel = ['user'];
+    return this.userService.getById(roleLevel, id);
   }
 
   @Mutation(() => UserDto)
@@ -29,7 +31,10 @@ export class UserResolver {
   }
 
   @Mutation(() => UserDto)
-  async assignRole(@Args('userId') userId: string, @Args('role') role: string) {
+  async assignRole(
+    @Args('userId') userId: string,
+    @Args('role') role: UserRole,
+  ) {
     return this.userService.assignRole(userId, role);
   }
 }

@@ -20,7 +20,7 @@ const {
 
 mongoose.set('debug', process.env.NODE_ENV !== 'production');
 
-const dsn = `mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@${DB_HOST}:${DB_PORT}/${MONGO_INITDB_DATABASE}`;
+const dsn = `mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@0.0.0.0:${DB_PORT}/${MONGO_INITDB_DATABASE}`;
 
 console.debug('DSN', dsn);
 
